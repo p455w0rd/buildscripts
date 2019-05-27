@@ -1,0 +1,9 @@
+task apiJar(type: Jar) {
+	classifier = 'api'
+	from sourceSets.api.output
+	from sourceSets.api.allJava
+}
+
+artifacts {
+	archives apiJar
+}

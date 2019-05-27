@@ -1,0 +1,4 @@
+dependencies {
+	deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.34"
+	deobfCompile "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
+}

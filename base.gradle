@@ -1,0 +1,166 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven {
+			name = "forge"
+			url = "http://files.minecraftforge.net/maven"
+		}
+	}
+	dependencies {
+		classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+	}
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+sourceCompatibility = targetCompatibility = "1.8"
+
+minecraft {
+    version = "1.12.2-14.23.5.2836"
+	mappings = "snapshot_20171003"
+	runDir = "run"
+	replace '@FINGERPRINT@', project.findProperty('signSHA1')
+	//useDepAts = true
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		name = "progwml6"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		name = "tterrag"
+		url = "http://maven.tterrag.com"
+	}
+	maven {
+		name = "tterrag2"
+		url = "http://maven2.tterrag.com"
+	}
+	maven {
+		url "http://mobiusstrip.eu/maven"
+	}
+	maven {
+		name = "tehnut"
+		url = "http://tehnut.info/maven"
+	}
+	maven {
+        name = "covers Maven"
+        url = "http://maven.covers1624.net"
+    }
+	maven {
+		name = "Curse"
+		url = "https://minecraft.curseforge.com/api/maven/"
+	}
+	maven {
+		name = "ChickenBones"
+		url "http://chickenbones.net/maven"
+	}
+	maven {
+		name = "k-4unl"
+        url "http://maven.k-4u.nl"
+    }
+	maven {
+		name = "LatvianModder"
+		url = "https://maven.latmod.com"
+	}
+	maven {
+		name = "mmd"
+		url = "http://maven.mcmoddev.com"
+	}
+	maven {
+		url = 'https://repo.elytradev.com'
+	}
+}
+
+dependencies {
+	deobfCompile "mezz.jei:jei_1.12.2:4.14.3.238"
+	compile "mezz.jei:jei_1.12.2:4.14.3.238"
+	runtime "mezz.jei:jei_1.12.2:4.14.3.238"
+	deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.101"
+	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
+	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
+}
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
+    onlyIf {
+        project.hasProperty('keyStore')
+    }
+    keyStore = project.findProperty('keyStore')
+    alias = project.findProperty('keyStoreAlias')
+    storePass = project.findProperty('keyStorePass')
+    keyPass = project.findProperty('keyStoreKeyPass')
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
+}
+
+build.dependsOn signJar
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+artifacts {
+	archives sourcesJar
+}
+
+String getVersion(String javaFile) {
+	String major = "0";
+	String revision = "0";
+	String patch = "0";
+	String prefix = "public static final String VERSION = \"";
+	File file = file(javaFile)
+	file.eachLine { String s ->
+		s = s.trim();
+		if (s.startsWith(prefix)) {
+			s = s.substring(prefix.length(), s.length() - 2);
+			String[] pts = s.split("\\.");
+
+			major = pts[0];
+			revision = pts[1];
+			patch = pts[2];
+		}
+	}
+	return "$major.$revision.$patch";
+}
+
+String getModId(String javaFile) {
+	String major = "0";
+	String revision = "0";
+	String patch = "0";
+	String prefix = "public static final String MODID = \"";
+	File file = file(javaFile)
+	file.eachLine { String s ->
+		s = s.trim();
+		if (s.startsWith(prefix)) {
+			s = s.substring(prefix.length(), s.length() - 2);
+			String[] pts = s.split("\\.");
+
+			major = pts[0];
+			revision = pts[1];
+			patch = pts[2];
+		}
+	}
+	return "$major.$revision.$patch";
+}
+
+String getModName(String javaFile) {
+	String major = "0";
+	String revision = "0";
+	String patch = "0";
+	String prefix = "public static final String NAME = \"";
+	File file = file(javaFile)
+	file.eachLine { String s ->
+		s = s.trim();
+		if (s.startsWith(prefix)) {
+			s = s.substring(prefix.length(), s.length() - 2);
+			String[] pts = s.split("\\.");
+
+			major = pts[0];
+			revision = pts[1];
+			patch = pts[2];
+		}
+	}
+	return "$major.$revision.$patch";
+}

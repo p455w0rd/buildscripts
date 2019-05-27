@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "p455w0rd:AE2WTLib:1.12.2-1.0.10"
+}

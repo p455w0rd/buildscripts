@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "baubles:Baubles:1.12:1.5.2"
+}
