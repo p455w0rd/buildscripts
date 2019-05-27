@@ -80,6 +80,7 @@ dependencies {
 	deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.101"
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
+	deobfCompile "laggoggles:LagGoggles-FORGE-1.12.2:4.3:HOTFIX"
 }
 
 task signJar(type: SignJar, dependsOn: reobfJar) {
@@ -103,6 +104,19 @@ task sourcesJar(type: Jar) {
 
 artifacts {
 	archives sourcesJar
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+    from(sourceSets.main.resources.srcDirs) {
+        include "mcmod.info"
+        expand "version": project.version, "mcversion": project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "mcmod.info"
+    }
+	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 String getVersion(String javaFile) {
@@ -135,14 +149,9 @@ String getModId(String javaFile) {
 		s = s.trim();
 		if (s.startsWith(prefix)) {
 			s = s.substring(prefix.length(), s.length() - 2);
-			String[] pts = s.split("\\.");
-
-			major = pts[0];
-			revision = pts[1];
-			patch = pts[2];
 		}
 	}
-	return "$major.$revision.$patch";
+	return "$s";
 }
 
 String getModName(String javaFile) {
@@ -155,12 +164,7 @@ String getModName(String javaFile) {
 		s = s.trim();
 		if (s.startsWith(prefix)) {
 			s = s.substring(prefix.length(), s.length() - 2);
-			String[] pts = s.split("\\.");
-
-			major = pts[0];
-			revision = pts[1];
-			patch = pts[2];
 		}
 	}
-	return "$major.$revision.$patch";
+	return "$s";
 }
