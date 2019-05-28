@@ -36,9 +36,9 @@ repositories {
 		url = "http://tehnut.info/maven"
 	}
 	maven {
-        name = "covers Maven"
-        url = "http://maven.covers1624.net"
-    }
+		name = "covers Maven"
+		url = "http://maven.covers1624.net"
+	}
 	maven {
 		name = "Curse"
 		url = "https://minecraft.curseforge.com/api/maven/"
