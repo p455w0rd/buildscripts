@@ -161,7 +161,7 @@ uploadArchives {
                     project {
                         name project.archivesBaseName
                         packaging 'jar'
-                        description '' + getModName()
+                        description project.archivesBaseName
                         url 'https://github.com/' + project.gitSlug
 
                         scm {
