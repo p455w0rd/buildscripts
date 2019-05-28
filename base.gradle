@@ -2,9 +2,9 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
 sourceCompatibility = targetCompatibility = "1.8"
 
-version = "1.12.2-" + getVersion(project.modPropertiesJavaFile)
-group = getModId(project.modPropertiesJavaFile)
-archivesBaseName = getModName(project.modPropertiesJavaFile)
+version = "1.12.2-" + getVersion()
+group = getModId()
+archivesBaseName = getModName()
 
 minecraft {
     version = "1.12.2-14.23.5.2836"
@@ -110,12 +110,13 @@ processResources {
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
-String getVersion(String javaFile) {
-	String major = "0";
+String getVersion() {
+	String major = "1";
 	String revision = "0";
 	String patch = "0";
+	if (project.hasProperty("modPropertiesJavaFile")) {
 	String prefix = "public static final String VERSION = \"";
-	File file = file(javaFile)
+	File file = file(project.modPropertiesJavaFile)
 	file.eachLine { String s ->
 		s = s.trim();
 		if (s.startsWith(prefix)) {
@@ -127,32 +128,37 @@ String getVersion(String javaFile) {
 			patch = pts[2];
 		}
 	}
+	}
 	return "$major.$revision.$patch";
 }
 
-String getModId(String javaFile) {
-	String modid = "";
-	String prefix = "public static final String MODID = \"";
-	File file = file(javaFile)
-	file.eachLine { String s ->
-		s = s.trim();
-		if (s.startsWith(prefix)) {
-			s = s.substring(prefix.length(), s.length() - 2);
-			modid = s;
+String getModId() {
+	String modid = "mymod";
+	if (project.hasProperty("modPropertiesJavaFile")) {
+		String prefix = "public static final String MODID = \"";
+		File file = file(project.modPropertiesJavaFile)
+		file.eachLine { String s ->
+			s = s.trim();
+			if (s.startsWith(prefix)) {
+				s = s.substring(prefix.length(), s.length() - 2);
+				modid = s;
+			}
 		}
 	}
 	return "$modid";
 }
 
-String getModName(String javaFile) {
-	String modname = "";
-	String prefix = "public static final String NAME = \"";
-	File file = file(javaFile)
-	file.eachLine { String s ->
-		s = s.trim();
-		if (s.startsWith(prefix)) {
-			s = s.substring(prefix.length(), s.length() - 2);
-			modname = s;
+String getModName() {
+	String modname = "MyMod";
+	if (project.hasProperty("modPropertiesJavaFile")) {
+		String prefix = "public static final String NAME = \"";
+		File file = file(project.modPropertiesJavaFile)
+		file.eachLine { String s ->
+			s = s.trim();
+			if (s.startsWith(prefix)) {
+				s = s.substring(prefix.length(), s.length() - 2);
+				modname = s;
+			}
 		}
 	}
 	return "$modname";
