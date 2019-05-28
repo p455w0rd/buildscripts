@@ -1,0 +1,57 @@
+apply plugin: "com.matthewprenger.cursegradle"
+
+curseforge{
+	if (hasMinCredentials()) {
+		//if (project.hasProperty("curseKey")) {
+		apiKey = project.curseKey
+		//}
+		//else {
+		//	apiKey = ""
+		//}
+		if (project.hasProperty("curseDebug")) {
+			debug=project.curseDebug
+		}
+		else {
+			debug=true
+		}
+		project{
+			id = project.curseId
+			relations {
+				if (project.hasProperty("curseOptionals")) {
+					def String optionals = project.getProperty("curseOptionals").split(";")
+					for (optional in optionals) {
+						optionalLibrary "$optional"
+					}
+				}
+				if (project.hasProperty("curseRequireds")) {
+					def String requireds = project.getProperty("curseRequireds").split(";")
+					for (required in requireds) {
+						requiredLibrary "$required"
+					}
+				}
+			}
+			releaseType = project.curseReleaseType
+			addGameVersion minecraft.version
+			//changelog = file('changelog.html')
+			//changelogType = 'html'
+			changelog = project.group + "-" + minecraft.version + "-" + project.version
+			mainArtifact jar
+			addArtifact deobfJar
+			addArtifact sourcesJar
+			//mainArtifact(jar) {
+				//displayName = "ICBM Sentries ${project.version}-UNSTABLE build " + project.getBuildNumber() + " for " + minecraft.version
+			//}
+			//addArtifact(deobfJar) {
+				//displayName = "ICBM Sentries ${project.version}-UNSTABLE-deobf build " + project.getBuildNumber() + " for " + minecraft.version
+			//}
+		}
+	}
+}
+
+Boolean hasMinCredentials() {
+	return project.hasProperty("curseKey") && project.hasProperty("curseId") && project.hasProperty("curseReleaseType");
+}
+
+Boolean canUpload() {
+	return hasMinCredentials() && project.hasProperty("curseDebug")
+}

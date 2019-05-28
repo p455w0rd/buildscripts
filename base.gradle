@@ -93,8 +93,42 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+    manifest {
+        if (project.hasProperty("fmlPlugin")) {
+			if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
+				manifest.mainAttributes(
+					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
+					"Implementation-Title": project.group,
+					"Implementation-Version": getVersion(),
+					"Built-On": getVersion(),
+					"FMLCorePlugin": project.fmlPlugin,
+					"FMLCorePluginContainsFMLMod": "true",
+					"FMLAT": project.group + "_at.cfg"
+				)
+			}
+			else {
+				manifest.mainAttributes(
+					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
+					"Implementation-Title": project.group,
+					"Implementation-Version": getVersion(),
+					"Built-On": getVersion(),
+					"FMLCorePlugin": project.fmlPlugin,
+					"FMLCorePluginContainsFMLMod": "true"
+				)
+			}
+		}
+		else if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
+			attributes 'FMLAT': project.group + "_at.cfg"
+		}
+    }
+}
+
 artifacts {
 	archives sourcesJar
+	archives deobfJar
 }
 
 processResources {
