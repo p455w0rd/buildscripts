@@ -15,7 +15,7 @@ minecraft {
 }
 
 repositories {
-	mavenCentral()
+	jcenter()
 	maven {
 		name = "progwml6"
 		url = "http://dvs1.progwml6.com/files/maven"
@@ -110,24 +110,32 @@ processResources {
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
+jar {
+	manifest {
+		if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
+			attributes 'FMLAT': project.group + "_at.cfg"
+		}
+	}
+}
+
 String getVersion() {
 	String major = "1";
 	String revision = "0";
 	String patch = "0";
 	if (project.hasProperty("modPropertiesJavaFile")) {
-	String prefix = "public static final String VERSION = \"";
-	File file = file(project.modPropertiesJavaFile)
-	file.eachLine { String s ->
-		s = s.trim();
-		if (s.startsWith(prefix)) {
-			s = s.substring(prefix.length(), s.length() - 2);
-			String[] pts = s.split("\\.");
+		String prefix = "public static final String VERSION = \"";
+		File file = file(project.modPropertiesJavaFile)
+		file.eachLine { String s ->
+			s = s.trim();
+			if (s.startsWith(prefix)) {
+				s = s.substring(prefix.length(), s.length() - 2);
+				String[] pts = s.split("\\.");
 
-			major = pts[0];
-			revision = pts[1];
-			patch = pts[2];
+				major = pts[0];
+				revision = pts[1];
+				patch = pts[2];
+			}
 		}
-	}
 	}
 	return "$major.$revision.$patch";
 }
