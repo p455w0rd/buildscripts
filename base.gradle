@@ -49,8 +49,8 @@ repositories {
 	}
 	maven {
 		name = "k-4unl"
-        url "http://maven.k-4u.nl"
-    }
+		url "http://maven.k-4u.nl"
+	}
 	maven {
 		name = "LatvianModder"
 		url = "https://maven.latmod.com"
