@@ -4,7 +4,7 @@ sourceCompatibility = targetCompatibility = "1.8"
 
 version = "1.12.2-" + getVersion()
 group = getModId()
-archivesBaseName = getModName()
+archivesBaseName = getArchiveName()
 
 minecraft {
     version = "1.12.2-14.23.5.2836"
@@ -118,7 +118,7 @@ jar {
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
 					"Implementation-Title": project.group,
 					"Implementation-Version": getVersion(),
-					"Built-On": "1.12.2-" + getVersion(),
+					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
 					"FMLCorePluginContainsFMLMod": "true",
 					"FMLAT": project.group + "_at.cfg"
@@ -129,7 +129,7 @@ jar {
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
 					"Implementation-Title": project.group,
 					"Implementation-Version": getVersion(),
-					"Built-On": "1.12.2-" + getVersion(),
+					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
 					"FMLCorePluginContainsFMLMod": "true"
 				)
@@ -249,4 +249,11 @@ String getModName() {
 		}
 	}
 	return "$modname";
+}
+
+String getArchiveName() {
+	if (project.hasProperty("archiveBase")) {
+		return project.archiveBase;
+	}
+	return getModName();
 }
