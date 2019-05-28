@@ -141,6 +141,62 @@ jar {
 	}
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
+				if (project.hasProperty("maven_pass")) {
+					println "Uploading to remote maven."
+					repository(url: "http://maven_upload.covers1624.net/") {
+						authentication(userName: project.getProperty("maven_user"), password: project.getProperty("maven_pass"))
+					}
+				} else {
+					println "Uploading to local maven."
+					repository(url: "file://${local_maven}/.m2/repository")
+				}
+                pom {
+                    groupId = project.group
+                    // Force the maven upload to use the <mcversion>-<version> syntax preferred at files
+                    artifactId = project.archivesBaseName
+                    project {
+                        name project.archivesBaseName
+                        packaging 'jar'
+                        description '' + getModName()
+                        url 'https://github.com/' + project.gitSlug
+
+                        scm {
+                            url 'https://github.com/' + project.gitSlug
+                            connection 'scm:git:git://github.com/' + project.gitSlug + '.git'
+                            developerConnection 'scm:git:git@github.com:' + project.gitSlug + '.git'
+                        }
+
+                        issueManagement {
+                            system 'github'
+                            url 'https://github.com/' + project.gitSlug + '/issues'
+                        }
+
+                        licenses {
+                            license {
+                                name 'MIT'
+                                url 'https://opensource.org/licenses/MIT'
+                                distribution 'repo'
+                            }
+                        }
+
+                        developers {
+                            developer {
+                                id 'TheRealp455w0rd'
+                                name 'Mike Balser'
+                                roles { role 'developer' }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 String getVersion() {
 	String major = "1";
 	String revision = "0";
@@ -193,60 +249,4 @@ String getModName() {
 		}
 	}
 	return "$modname";
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
-				if (project.hasProperty("maven_pass")) {
-					println "Uploading to remote maven."
-					repository(url: "http://maven_upload.covers1624.net/") {
-						authentication(userName: project.getProperty("maven_user"), password: project.getProperty("maven_pass"))
-					}
-				} else {
-					println "Uploading to local maven."
-					repository(url: "file://${local_maven}/.m2/repository")
-				}
-                pom {
-                    groupId = project.group
-                    // Force the maven upload to use the <mcversion>-<version> syntax preferred at files
-                    artifactId = project.archivesBaseName
-                    project {
-                        name project.archivesBaseName
-                        packaging 'jar'
-                        description getModName()
-                        url 'https://github.com/' + project.gitSlug
-
-                        scm {
-                            url 'https://github.com/' + project.gitSlug
-                            connection 'scm:git:git://github.com/' + project.gitSlug + '.git'
-                            developerConnection 'scm:git:git@github.com:' + project.gitSlug + '.git'
-                        }
-
-                        issueManagement {
-                            system 'github'
-                            url 'https://github.com/' + project.gitSlug + '/issues'
-                        }
-
-                        licenses {
-                            license {
-                                name 'MIT'
-                                url 'https://opensource.org/licenses/MIT'
-                                distribution 'repo'
-                            }
-                        }
-
-                        developers {
-                            developer {
-                                id 'TheRealp455w0rd'
-                                name 'Mike Balser'
-                                roles { role 'developer' }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
