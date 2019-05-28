@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "item-scroller:itemscroller:1.12.2:0.12.0"
+}

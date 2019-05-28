@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "mouse-tweaks:MouseTweaks:2.10:mc1.12.2"
+}
