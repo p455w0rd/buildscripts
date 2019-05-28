@@ -66,7 +66,7 @@ repositories {
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.12.2:4.14.3.238"
-	compile "mezz.jei:jei_1.12.2:4.14.3.238"
+	//compile "mezz.jei:jei_1.12.2:4.14.3.238"
 	runtime "mezz.jei:jei_1.12.2:4.14.3.238"
 	deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.101"
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
