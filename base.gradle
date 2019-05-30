@@ -68,7 +68,9 @@ dependencies {
 	//deobfCompile "mezz.jei:jei_1.12.2:4.14.3.238"
 	compile "mezz.jei:jei_1.12.2:4.14.3.238"
 	runtime "mezz.jei:jei_1.12.2:4.14.3.238"
-	deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.101"
+	if (!project.hasProperty("excludePwLib")) {
+		deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.104"
+	}
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
 	deobfCompile "laggoggles:LagGoggles-FORGE-1.12.2:4.3:HOTFIX"
@@ -180,12 +182,10 @@ uploadArchives {
         mavenDeployer {
             if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
 				if (project.hasProperty("maven_pass")) {
-					println "Uploading to remote maven."
 					repository(url: "http://maven_upload.covers1624.net/") {
 						authentication(userName: project.getProperty("maven_user"), password: project.getProperty("maven_pass"))
 					}
 				} else {
-					println "Uploading to local maven."
 					repository(url: "file://${local_maven}/.m2/repository")
 				}
                 pom {
