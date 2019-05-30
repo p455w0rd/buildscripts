@@ -232,7 +232,7 @@ uploadArchives {
 }
 
 String getGroup() {
-	if (project.hasProperty("jarGoup")) {
+	if (project.hasProperty("jarGroup")) {
 		return project.getPropety("jarGroup");
 	}
 	return getModId();
