@@ -3,7 +3,7 @@ apply plugin: 'maven'
 sourceCompatibility = targetCompatibility = "1.8"
 
 version = "1.12.2-" + getVersion()
-group = getModId()
+group = getGroup()
 archivesBaseName = getArchiveName()
 
 minecraft {
@@ -229,6 +229,13 @@ uploadArchives {
             }
         }
     }
+}
+
+String getGroup() {
+	if (project.hasProperty("jarGoup")) {
+		return project.getPropety("jarGroup");
+	}
+	return getModId();
 }
 
 String getVersion() {
