@@ -235,7 +235,7 @@ String getGroup() {
 	if (project.hasProperty("jarGroup")) {
 		return project.getProperty("jarGroup");
 	}
-	return getModId();
+	return "p455w0rd";
 }
 
 String getVersion() {
