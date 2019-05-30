@@ -98,21 +98,21 @@ task deobfJar(type: Jar) {
     classifier = 'deobf'
     manifest {
         if (project.hasProperty("fmlPlugin")) {
-			if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
+			if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
 				manifest.mainAttributes(
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": project.group,
+					"Implementation-Title": getModId(),
 					"Implementation-Version": getVersion(),
 					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
 					"FMLCorePluginContainsFMLMod": "true",
-					"FMLAT": project.group + "_at.cfg"
+					"FMLAT": getModId() + "_at.cfg"
 				)
 			}
 			else {
 				manifest.mainAttributes(
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": project.group,
+					"Implementation-Title": getModId(),
 					"Implementation-Version": getVersion(),
 					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
@@ -120,8 +120,8 @@ task deobfJar(type: Jar) {
 				)
 			}
 		}
-		else if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
-			attributes 'FMLAT': project.group + "_at.cfg"
+		else if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
+			attributes 'FMLAT': getModId() + "_at.cfg"
 		}
     }
 }
@@ -147,21 +147,21 @@ processResources {
 jar {
 	manifest {
 		if (project.hasProperty("fmlPlugin")) {
-			if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
+			if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
 				manifest.mainAttributes(
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": project.group,
+					"Implementation-Title": getModId(),
 					"Implementation-Version": getVersion(),
 					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
 					"FMLCorePluginContainsFMLMod": "true",
-					"FMLAT": project.group + "_at.cfg"
+					"FMLAT": getModId() + "_at.cfg"
 				)
 			}
 			else {
 				manifest.mainAttributes(
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": project.group,
+					"Implementation-Title": getModId(),
 					"Implementation-Version": getVersion(),
 					"Built-On": getVersion(),
 					"FMLCorePlugin": project.fmlPlugin,
@@ -169,8 +169,8 @@ jar {
 				)
 			}
 		}
-		else if (file("./src/main/resources/" + project.group + "_at.cfg").exists()) {
-			attributes 'FMLAT': project.group + "_at.cfg"
+		else if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
+			attributes 'FMLAT': getModId() + "_at.cfg"
 		}
 	}
 }
