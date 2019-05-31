@@ -1,5 +1,7 @@
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven'
+apply plugin: 'java'
+
 sourceCompatibility = targetCompatibility = "1.8"
 
 version = "1.12.2-" + getVersion()
