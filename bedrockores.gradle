@@ -1,3 +1,3 @@
 dependencies {
-	deobfCompile "bedrockores:Bedrock%20Ores:MC1.12:1.2.7.42"
+	deobfCompile "bedrockores:Bedrock Ores:MC1.12:1.2.7.42"
 }
