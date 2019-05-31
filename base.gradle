@@ -35,7 +35,7 @@ repositories {
 	}
 	maven {
 		name = "ProfMobius"
-		url = "https://mobiusstrip.eu/maven"
+		url = "http://mobiusstrip.eu/maven"
 	}
 	maven {
 		name = "tehnut"
