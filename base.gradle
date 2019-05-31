@@ -11,7 +11,12 @@ minecraft {
 	mappings = "snapshot_20171003"
 	runDir = "run"
 	replace '@FINGERPRINT@', project.findProperty('signSHA1')
-	//useDepAts = true
+	useDepAts = true
+	serverJvmArgs += "-Dfml.doNotBackup=true"
+	serverJvmArgs += "-Dfml.queryResult=confirm"
+    clientJvmArgs += "-Dfml.doNotBackup=true"
+	//asm is only necessary client-side; albedo included jic
+	clientJvmArgs += "-Dfml.coreMods.load=p455w0rdslib.asm.FMLPlugin,albedo.asm.FMLPlugin"
 }
 
 repositories {
