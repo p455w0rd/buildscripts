@@ -23,26 +23,27 @@ repositories {
 	jcenter()
 	maven {
 		name = "progwml6"
-		url = "http://dvs1.progwml6.com/files/maven"
+		url = "https://dvs1.progwml6.com/files/maven"
 	}
 	maven {
 		name = "tterrag"
-		url = "http://maven.tterrag.com"
+		url = "https://maven.tterrag.com"
 	}
 	maven {
 		name = "tterrag2"
-		url = "http://maven2.tterrag.com"
+		url = "https://maven2.tterrag.com"
 	}
 	maven {
-		url "http://mobiusstrip.eu/maven"
+		name = "ProfMobius"
+		url = "https://mobiusstrip.eu/maven"
 	}
 	maven {
 		name = "tehnut"
-		url = "http://tehnut.info/maven"
+		url = "https://tehnut.info/maven"
 	}
 	maven {
 		name = "covers Maven"
-		url = "http://maven.covers1624.net"
+		url = "https://maven.covers1624.net"
 	}
 	maven {
 		name = "Curse"
@@ -50,11 +51,11 @@ repositories {
 	}
 	maven {
 		name = "ChickenBones"
-		url "http://chickenbones.net/maven"
+		url = "http://chickenbones.net/maven"
 	}
 	maven {
 		name = "k-4unl"
-		url "http://maven.k-4u.nl"
+		url "https://maven.k-4u.nl"
 	}
 	maven {
 		name = "LatvianModder"
@@ -65,7 +66,8 @@ repositories {
 		url = "http://maven.mcmoddev.com"
 	}
 	maven {
-		url = 'https://repo.elytradev.com'
+		name = "elytradev"
+		url = "https://repo.elytradev.com"
 	}
 }
 
