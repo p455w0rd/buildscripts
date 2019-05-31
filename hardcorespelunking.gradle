@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "hardcore-spelunking:hardcorespelunking:1.1"
+}
