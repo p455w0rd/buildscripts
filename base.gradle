@@ -3,7 +3,6 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
 apply plugin: 'signing'
-
 version = getMCVersion() + "-" + getVersion()
 group = getGroup()
 archivesBaseName = getArchiveName()
@@ -48,25 +47,20 @@ processResources {
 	}
 }
 
-task signJar {
-	onlyIf {
-		project.hasProperty("keyStore")
-	}
-    doLast {
-        configurations.archives.allArtifacts.files.each {
-            ant.signjar(
-                jar: it,
-				storetype:"jks",
-				alias: project.property("keyStoreAlias"),
-                storepass: project.property("keyStorePass"),
-                keystore: project.property("keyStore"),
-                keypass: project.property("keyStoreKeyPass"),
-                preservelastmodified:"true"
-            )
-            signing.sign(it)
-			project.logger.lifecycle("JAR Signed: " + it.name)
-        }
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: jar) {
+    onlyIf {
+        project.hasProperty('keyStore')
     }
+	if (project.hasProperty("keyStore")) {
+		keyStore = project.keyStore
+		alias = project.keyStoreAlias
+		storePass = project.keyStorePass
+		keyPass = project.keyStoreKeyPass
+		inputFile = jar.archivePath
+		outputFile = jar.archivePath
+	}
 }
 
 build.dependsOn signJar
