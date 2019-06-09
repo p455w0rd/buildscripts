@@ -1,4 +1,5 @@
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'net.minecraftforge.gradle.common.task.SignJar'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
@@ -47,20 +48,16 @@ processResources {
 	}
 }
 
-import net.minecraftforge.gradle.common.task.SignJar
-
 task signJar(type: SignJar, dependsOn: jar) {
-    onlyIf {
-        project.hasProperty('keyStore')
-    }
-	if (project.hasProperty("keyStore")) {
-		keyStore = project.keyStore
-		alias = project.keyStoreAlias
-		storePass = project.keyStorePass
-		keyPass = project.keyStoreKeyPass
-		inputFile = jar.archivePath
-		outputFile = jar.archivePath
+	onlyIf {
+		project.hasProperty("keyStore")
 	}
+	keyStore = project.findProperty("keyStore")
+	alias = project.findProperty("keyStoreAlias")
+	storePass = project.findProperty("keyStorePass")
+	keyPass = project.findProperty("keyStoreKeyPass")
+	inputFile = jar.archivePath
+	outputFile = jar.archivePath
 }
 
 build.dependsOn signJar
