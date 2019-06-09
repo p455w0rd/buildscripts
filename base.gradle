@@ -1,5 +1,4 @@
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'net.minecraftforge.gradle.common.task.SignJar'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
@@ -47,6 +46,8 @@ processResources {
 		exclude 'mods.toml'
 	}
 }
+
+import net.minecraftforge.gradle.common.task.SignJar
 
 task signJar(type: SignJar, dependsOn: jar) {
 	onlyIf {
