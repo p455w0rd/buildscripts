@@ -49,7 +49,7 @@ processResources {
 
 import net.minecraftforge.gradle.common.task.SignJar
 
-task signJar(type: SignJar, dependsOn: reobfJar) {
+task signJar(type: SignJar, dependsOn: jar) {
     onlyIf {
         project.hasProperty('keyStore')
     }
