@@ -97,7 +97,7 @@ jar {
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
     }
 	if (project.hasProperty("signSHA1")) {
-		manifest.mainAttributes += ["Fingerprint": project.getProperty("signSHA1")]
+		manifest.attributes += ["Fingerprint": project.getProperty("signSHA1")]
 	}
 }
 
