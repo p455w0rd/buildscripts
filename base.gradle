@@ -87,10 +87,10 @@ jar {
                     "Implementation-Version": getVersion(),
                     "Implementation-Vendor" : getModId(),
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
-					if (project.hasProprty("signSHA1")) {
-						attributes += {"Fingerprint": project.getProperty("signSHA1")}
-					}
     }
+	if (project.hasProprty("signSHA1")) {
+		manifest.mainAttributes += ["Fingerprint": project.getProperty("signSHA1")]
+	}
 }
 
 uploadArchives {
