@@ -1,8 +1,0 @@
-dependencies {
-	deobfCompile "info.loenwind.autoconfig:AutoConfig:1.12.2-1.0.1"
-	deobfCompile "info.loenwind.autosave:AutoSave:1.12.2-1.0.8"
-	deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.44"
-	deobfCompile ("com.enderio:EnderIO:1.12.2-5.0.39") {
-		transitive = false
-	}
-}

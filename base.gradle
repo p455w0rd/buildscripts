@@ -1,92 +1,50 @@
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
 
-sourceCompatibility = targetCompatibility = "1.8"
-
-version = "1.12.2-" + getVersion()
+version = getMCVersion() + "-" + getVersion()
 group = getGroup()
 archivesBaseName = getArchiveName()
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    version = "1.12.2-14.23.5.2836"
-	mappings = "snapshot_20171003"
-	runDir = "run"
-	replace '@FINGERPRINT@', project.findProperty('signSHA1')
-	useDepAts = true
-	serverJvmArgs += "-Dfml.doNotBackup=true"
-	serverJvmArgs += "-Dfml.queryResult=confirm"
-    clientJvmArgs += "-Dfml.doNotBackup=true"
-	//asm is only necessary client-side; albedo included jic
-	clientJvmArgs += "-Dfml.coreMods.load=p455w0rdslib.asm.FMLPlugin,albedo.asm.FMLPlugin"
+    mappings channel: 'snapshot', version: '20190607-1.14.2'
+	
+    runs {
+        client = {
+            properties 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP'
+            properties 'forge.logging.console.level': 'debug'
+            workingDirectory project.file('run').canonicalPath
+            source sourceSets.main
+        }
+        server = {
+            properties 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP'
+            properties 'forge.logging.console.level': 'debug'
+            workingDirectory project.file('run').canonicalPath
+            source sourceSets.main
+        }
+    }
 }
 
 repositories {
-	jcenter()
-	maven {
-		name = "progwml6"
-		url = "https://dvs1.progwml6.com/files/maven"
-	}
-	maven {
-		name = "tterrag"
-		url = "https://maven.tterrag.com"
-	}
-	maven {
-		name = "tterrag2"
-		url = "https://maven2.tterrag.com"
-	}
-	maven {
-		name = "ProfMobius"
-		url = "http://mobiusstrip.eu/maven"
-	}
-	maven {
-		name = "tehnut"
-		url = "https://tehnut.info/maven"
-	}
-	maven {
-		name = "covers Maven"
-		url = "https://maven.covers1624.net"
-	}
-	maven {
-		name = "Curse"
-		url = "https://minecraft.curseforge.com/api/maven/"
-	}
-	maven {
-		name = "ChickenBones"
-		url = "http://chickenbones.net/maven"
-	}
-	maven {
-		name = "k-4unl"
-		url "https://maven.k-4u.nl"
-	}
-	maven {
-		name = "LatvianModder"
-		url = "https://maven.latmod.com"
-	}
-	maven {
-		name = "mmd"
-		url = "http://maven.mcmoddev.com"
-	}
-	maven {
-		name = "elytradev"
-		url = "https://repo.elytradev.com"
-	}
-}
 
-configurations.all {
-    transitive = false
 }
 
 dependencies {
-	//deobfCompile "mezz.jei:jei_1.12.2:4.14.3.238"
-	compile "mezz.jei:jei_1.12.2:4.14.3.238"
-	//runtime "mezz.jei:jei_1.12.2:4.14.3.238"
-	if (!project.hasProperty("excludePwLib")) {
-		deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.2.114"
+	minecraft "net.minecraftforge:forge:" + getMCVersion() + "-" + getForgeSpec()
+}
+
+processResources {
+	inputs.property "version", getVersion()
+	inputs.property "mcversion", getMCVersion()
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mods.toml'
+		expand 'version':getVersion(), 'mcversion':getMCVersion()
 	}
-	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
-	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
-	deobfCompile "laggoggles:LagGoggles-FORGE-1.12.2:4.3:HOTFIX"
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mods.toml'
+	}
 }
 
 task signJar(type: SignJar, dependsOn: reobfJar) {
@@ -113,34 +71,6 @@ task sourcesJar(type: Jar) {
 task deobfJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'deobf'
-    manifest {
-        if (project.hasProperty("fmlPlugin")) {
-			if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
-				manifest.mainAttributes(
-					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": getModId(),
-					"Implementation-Version": getVersion(),
-					"Built-On": getVersion(),
-					"FMLCorePlugin": project.fmlPlugin,
-					"FMLCorePluginContainsFMLMod": "true",
-					"FMLAT": getModId() + "_at.cfg"
-				)
-			}
-			else {
-				manifest.mainAttributes(
-					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": getModId(),
-					"Implementation-Version": getVersion(),
-					"Built-On": getVersion(),
-					"FMLCorePlugin": project.fmlPlugin,
-					"FMLCorePluginContainsFMLMod": "true"
-				)
-			}
-		}
-		else if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
-			attributes 'FMLAT': getModId() + "_at.cfg"
-		}
-    }
 }
 
 artifacts {
@@ -148,48 +78,16 @@ artifacts {
 	archives deobfJar
 }
 
-processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-    from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
-        expand "version": project.version, "mcversion": project.minecraft.version
-    }
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "mcmod.info"
-    }
-	rename '(.+_at.cfg)', 'META-INF/$1'
-}
-
 jar {
-	manifest {
-		if (project.hasProperty("fmlPlugin")) {
-			if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
-				manifest.mainAttributes(
-					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": getModId(),
-					"Implementation-Version": getVersion(),
-					"Built-On": getVersion(),
-					"FMLCorePlugin": project.fmlPlugin,
-					"FMLCorePluginContainsFMLMod": "true",
-					"FMLAT": getModId() + "_at.cfg"
-				)
-			}
-			else {
-				manifest.mainAttributes(
-					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
-					"Implementation-Title": getModId(),
-					"Implementation-Version": getVersion(),
-					"Built-On": getVersion(),
-					"FMLCorePlugin": project.fmlPlugin,
-					"FMLCorePluginContainsFMLMod": "true"
-				)
-			}
-		}
-		else if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
-			attributes 'FMLAT': getModId() + "_at.cfg"
-		}
-	}
+    manifest {
+        attributes(["Specification-Title": getModName(),
+                    "Specification-Vendor": getModId(),
+                    "Specification-Version": getForgeSpec(),
+                    "Implementation-Title": getModName(),
+                    "Implementation-Version": getVersion(),
+                    "Implementation-Vendor" : getModId(),
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
+    }
 }
 
 uploadArchives {
@@ -246,11 +144,19 @@ uploadArchives {
     }
 }
 
+String getMCVersion() {
+	return "1.14.2";
+}
+
+String getForgeSpec() {
+	return "26.0.5";
+}
+
 String getGroup() {
 	if (project.hasProperty("jarGroup")) {
 		return project.getProperty("jarGroup");
 	}
-	return "p455w0rd";
+	return "p455w0rd." + getModId();
 }
 
 String getVersion() {

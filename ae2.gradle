@@ -1,3 +1,0 @@
-dependencies {
-	deobfCompile "appeng:appliedenergistics2:rv6-stable-6"
-}
