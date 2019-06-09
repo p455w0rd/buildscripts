@@ -47,7 +47,9 @@ processResources {
 	}
 }
 
-task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: reobfJar) {
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
     onlyIf {
         project.hasProperty('keyStore')
     }
