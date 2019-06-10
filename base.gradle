@@ -29,7 +29,10 @@ minecraft {
 }
 
 repositories {
-
+	maven {
+		name = "forge"
+		url = "http://files.minecraftforge.net/maven"
+	}
 }
 
 dependencies {
