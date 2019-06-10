@@ -17,11 +17,12 @@ buildscript {
 }
 
 apply plugin: 'net.minecraftforge.gradle'
-import net.minecraftforge.gradle.common.task.SignJar
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
-apply plugin: 'signing'
+
+import net.minecraftforge.gradle.common.task.SignJar
+
 version = getMCVersion() + "-" + getVersion()
 group = getGroup()
 archivesBaseName = getArchiveName()
