@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
+}
