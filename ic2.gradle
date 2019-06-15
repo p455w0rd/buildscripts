@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "industrial-craft:industrialcraft-2-2.8.159:ex112:dev"
+}
