@@ -1,6 +1,6 @@
-apply from : 'ae2.gradle'
-apply from : 'baubles.gradle'
-apply from : 'rf.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/ae2.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/baubles.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/rf.gradle'
 dependencies {
 	deobfCompile "p455w0rd:AE2WTLib:1.12.2-1.0.22"
 }
