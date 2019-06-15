@@ -13,7 +13,7 @@ minecraft {
 	mappings = "snapshot_20171003"
 	runDir = "run"
 	replace '@FINGERPRINT@', project.findProperty('signSHA1')
-	useDepAts = true
+	useDepAts = false
 	serverJvmArgs += "-Dfml.doNotBackup=true"
 	serverJvmArgs += "-Dfml.queryResult=confirm"
     clientJvmArgs += "-Dfml.doNotBackup=true"
