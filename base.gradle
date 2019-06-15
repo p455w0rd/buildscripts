@@ -220,7 +220,7 @@ uploadArchives {
 					repository(url: "file://${local_maven}/.m2/repository")
 				}
                 pom {
-                    groupId = project.group
+                    groupId = getArtifactGroup()
                     // Force the maven upload to use the <mcversion>-<version> syntax preferred at files
                     artifactId = project.archivesBaseName
                     project {
