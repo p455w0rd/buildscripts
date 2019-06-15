@@ -143,9 +143,21 @@ task deobfJar(type: Jar) {
     }
 }
 
+task apiJar(type: Jar) {
+	classifier = 'api'
+	from sourceSets.api.java
+	include "p455w0rd/" + getModId() + "/api/**"
+
+	from sourceSets.api.output
+	include "p455w0rd/" + getModId() + "/api/**"
+}
+
 artifacts {
 	archives sourcesJar
 	archives deobfJar
+	if (project.hasProperty("buildAPIJar")) {
+		archives apiJar
+	}
 }
 
 processResources {
