@@ -16,7 +16,7 @@ minecraft {
 	useDepAts = false
 	serverJvmArgs += "-Dfml.doNotBackup=true"
 	serverJvmArgs += "-Dfml.queryResult=confirm"
-    clientJvmArgs += "-Dfml.doNotBackup=true"
+	clientJvmArgs += "-Dfml.doNotBackup=true"
 	//asm is only necessary client-side; albedo included jic
 	clientJvmArgs += "-Dfml.coreMods.load=p455w0rdslib.asm.FMLPlugin,albedo.asm.FMLPlugin"
 }
@@ -90,9 +90,9 @@ dependencies {
 }
 
 task signJar(type: SignJar, dependsOn: reobfJar) {
-    onlyIf {
-        project.hasProperty('keyStore')
-    }
+	onlyIf {
+		project.hasProperty('keyStore')
+	}
 	if (project.hasProperty("keyStore")) {
 		keyStore = project.keyStore
 		alias = project.keyStoreAlias
@@ -106,15 +106,15 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 build.dependsOn signJar
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
-    classifier = 'sources'
+	from sourceSets.main.allJava
+	classifier = 'sources'
 }
 
 task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'deobf'
-    manifest {
-        if (project.hasProperty("fmlPlugin")) {
+	from sourceSets.main.output
+	classifier = 'deobf'
+	manifest {
+		if (project.hasProperty("fmlPlugin")) {
 			if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
 				manifest.mainAttributes(
 					"Created-By": "${System.getProperty('java.vm.version')} + (${System.getProperty('java.vm.vendor')})",
@@ -140,18 +140,15 @@ task deobfJar(type: Jar) {
 		else if (file("./src/main/resources/" + getModId() + "_at.cfg").exists()) {
 			attributes 'FMLAT': getModId() + "_at.cfg"
 		}
-    }
+	}
 }
 
 task apiJar(type: Jar) {
 	classifier = 'api'
-
 	from sourceSets.main.output
 	from sourceSets.main.allJava
-	
 	from sourceSets.api.java
 	include "p455w0rd/" + getModId() + "/api/**"
-
 	from sourceSets.api.output
 	include "p455w0rd/" + getModId() + "/api/**"
 }
@@ -165,15 +162,15 @@ artifacts {
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-    from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
-        expand "version": project.version, "mcversion": project.minecraft.version
-    }
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "mcmod.info"
-    }
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+	from(sourceSets.main.resources.srcDirs) {
+		include "mcmod.info"
+		expand "version": project.version, "mcversion": project.minecraft.version
+	}
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "mcmod.info"
+	}
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
@@ -209,9 +206,9 @@ jar {
 }
 
 uploadArchives {
-    repositories {
-        mavenDeployer {
-            if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
+	repositories {
+		mavenDeployer {
+			if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
 				if (project.hasProperty("maven_pass")) {
 					repository(url: "http://maven_upload.covers1624.net/") {
 						authentication(userName: project.getProperty("maven_user"), password: project.getProperty("maven_pass"))
@@ -219,47 +216,47 @@ uploadArchives {
 				} else {
 					repository(url: "file://${local_maven}/.m2/repository")
 				}
-                pom {
-                    groupId = getArtifactGroup()
-                    // Force the maven upload to use the <mcversion>-<version> syntax preferred at files
-                    artifactId = project.archivesBaseName
-                    project {
-                        name project.archivesBaseName
-                        packaging 'jar'
-                        description project.archivesBaseName
-                        url 'https://github.com/' + project.gitSlug
+				pom {
+					groupId = getArtifactGroup()
+					// Force the maven upload to use the <mcversion>-<version> syntax preferred at files
+					artifactId = project.archivesBaseName
+					project {
+						name project.archivesBaseName
+						packaging 'jar'
+						description project.archivesBaseName
+						url 'https://github.com/' + project.gitSlug
 
-                        scm {
-                            url 'https://github.com/' + project.gitSlug
-                            connection 'scm:git:git://github.com/' + project.gitSlug + '.git'
-                            developerConnection 'scm:git:git@github.com:' + project.gitSlug + '.git'
-                        }
+						scm {
+							url 'https://github.com/' + project.gitSlug
+							connection 'scm:git:git://github.com/' + project.gitSlug + '.git'
+							developerConnection 'scm:git:git@github.com:' + project.gitSlug + '.git'
+						}
 
-                        issueManagement {
-                            system 'github'
-                            url 'https://github.com/' + project.gitSlug + '/issues'
-                        }
+						issueManagement {
+							system 'github'
+							url 'https://github.com/' + project.gitSlug + '/issues'
+						}
 
-                        licenses {
-                            license {
-                                name 'MIT'
-                                url 'https://opensource.org/licenses/MIT'
-                                distribution 'repo'
-                            }
-                        }
+						licenses {
+							license {
+								name 'MIT'
+								url 'https://opensource.org/licenses/MIT'
+								distribution 'repo'
+							}
+						}
 
-                        developers {
-                            developer {
-                                id 'TheRealp455w0rd'
-                                name 'Mike Balser'
-                                roles { role 'developer' }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+						developers {
+							developer {
+								id 'TheRealp455w0rd'
+								name 'Mike Balser'
+								roles { role 'developer' }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 String getArtifactGroup() {
