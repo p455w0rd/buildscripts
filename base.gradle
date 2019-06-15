@@ -259,6 +259,8 @@ uploadArchives {
 	}
 }
 
+uploadArchives.dependsOn signJar
+
 String getArtifactGroup() {
 	if (project.hasProperty("artifactGroup")) {
 		return project.getProperty("artifactGroup");
