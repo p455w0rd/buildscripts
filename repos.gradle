@@ -46,6 +46,6 @@ repositories {
 	}
 	maven {
 		name = "covers Maven"
-		url = "https://maven.covers1624.net"
+		url = "http://maven.covers1624.net"
 	}
 }
