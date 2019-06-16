@@ -21,10 +21,6 @@ repositories {
 		url = "https://tehnut.info/maven"
 	}
 	maven {
-		name = "covers Maven"
-		url = "https://maven.covers1624.net"
-	}
-	maven {
 		name = "ChickenBones"
 		url = "http://chickenbones.net/maven"
 	}
@@ -43,6 +39,10 @@ repositories {
 	maven {
 		name = "elytradev"
 		url = "https://repo.elytradev.com"
+	}
+	maven {
+		name = "covers Maven"
+		url = "https://maven.covers1624.net"
 	}
 	maven {
 		name = "Curse"
