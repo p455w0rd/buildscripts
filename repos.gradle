@@ -1,0 +1,51 @@
+repositories {
+	jcenter()
+	maven {
+		name = "progwml6"
+		url = "https://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		name = "tterrag"
+		url = "https://maven.tterrag.com"
+	}
+	maven {
+		name = "tterrag2"
+		url = "https://maven2.tterrag.com"
+	}
+	maven {
+		name = "ProfMobius"
+		url = "http://mobiusstrip.eu/maven"
+	}
+	maven {
+		name = "tehnut"
+		url = "https://tehnut.info/maven"
+	}
+	maven {
+		name = "covers Maven"
+		url = "https://maven.covers1624.net"
+	}
+	maven {
+		name = "ChickenBones"
+		url = "http://chickenbones.net/maven"
+	}
+	maven {
+		name = "k-4unl"
+		url "https://maven.k-4u.nl"
+	}
+	maven {
+		name = "LatvianModder"
+		url = "https://maven.latmod.com"
+	}
+	maven {
+		name = "mmd"
+		url = "http://maven.mcmoddev.com"
+	}
+	maven {
+		name = "elytradev"
+		url = "https://repo.elytradev.com"
+	}
+	maven {
+		name = "Curse"
+		url = "https://minecraft.curseforge.com/api/maven/"
+	}
+}

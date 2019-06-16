@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "placebo:Placebo:1.12.2:1.6.0"
+}

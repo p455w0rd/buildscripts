@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "ignition-foundry:Foundry:1.12.2:3.3.7"
+}
