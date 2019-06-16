@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "immersive-engineering:ImmersiveEngineering:0.12:89"
+}

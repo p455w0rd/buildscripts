@@ -1,7 +1,4 @@
 dependencies {
-	deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.353:universal"
-	//compile "codechicken:CodeChickenLib:1.12.2-3.2.2.353:universal"
-	deobfCompile "codechicken:NotEnoughItems:1.12.2-2.4.2.240:universal"
 	deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
 	deobfCompile "cofh:ThermalDynamics:1.12.2-2.5.4.18:universal"
 	deobfCompile "cofh:ThermalFoundation:1.12.2-2.6.2.26:universal"

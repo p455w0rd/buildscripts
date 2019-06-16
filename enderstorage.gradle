@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "codechicken:EnderStorage:1.12.2-2.4.5.135:universal"
+}
