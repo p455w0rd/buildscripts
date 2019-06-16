@@ -41,11 +41,11 @@ repositories {
 		url = "https://repo.elytradev.com"
 	}
 	maven {
-		name = "covers Maven"
-		url = "https://maven.covers1624.net"
-	}
-	maven {
 		name = "Curse"
 		url = "https://minecraft.curseforge.com/api/maven/"
+	}
+	maven {
+		name = "covers Maven"
+		url = "https://maven.covers1624.net"
 	}
 }
