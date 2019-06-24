@@ -25,7 +25,7 @@ repositories {
 		url = "http://chickenbones.net/maven"
 	}
 	maven {
-		name = "k-4unl"
+		name = "k-4u"
 		url "https://maven.k-4u.nl"
 	}
 	maven {
@@ -41,11 +41,15 @@ repositories {
 		url = "https://repo.elytradev.com"
 	}
 	maven {
-		name = "Curse"
-		url = "https://minecraft.curseforge.com/api/maven/"
-	}
-	maven {
 		name = "covers Maven"
 		url = "http://maven.covers1624.net"
+	}
+	maven {
+		name = "ModMaven"
+		url = "https://modmaven.k-4u.nl"
+	}
+	maven {
+		name = "Curse"
+		url = "https://minecraft.curseforge.com/api/maven/"
 	}
 }
