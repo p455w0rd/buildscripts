@@ -19,6 +19,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'java'
 
+apply from : 'https://raw.githubusercontent.com/p455w0rd/buildscripts/1.14-Forge/repos.gradle'
+
 import net.minecraftforge.gradle.common.task.SignJar
 
 version = getMCVersion() + "-" + getVersion()
@@ -45,12 +47,10 @@ minecraft {
     }
 }
 
-repositories {
-}
-
 dependencies {
 	minecraft "net.minecraftforge:forge:+"
 	// + getMCVersion() + "-" + getForgeSpec()
+	runtimeOnly fg.deobf("mezz.jei:jei-${getMCVersion()}:+")
 }
 
 processResources {
