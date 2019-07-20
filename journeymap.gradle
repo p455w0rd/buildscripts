@@ -1,3 +1,3 @@
 dependencies {
-	deobfCompile "journeymap:journeymap:1.12.2:5.5.5b7"
+	deobfCompile curse.resolve("journeymap", "2738211")
 }

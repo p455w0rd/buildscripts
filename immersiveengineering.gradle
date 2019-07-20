@@ -1,3 +1,3 @@
 dependencies {
-	deobfCompile "immersive-engineering:ImmersiveEngineering:0.12:89"
+	deobfCompile curse.resolve("immersive-engineering", "2676501")
 }
