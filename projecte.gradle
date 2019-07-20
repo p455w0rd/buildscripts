@@ -1,3 +1,4 @@
+apply plugin: 'com.wynprice.cursemaven'
 dependencies {
 	deobfCompile curse.resolve("projecte", "2702991")
 }

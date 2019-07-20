@@ -1,3 +1,4 @@
+apply plugin: 'com.wynprice.cursemaven'
 dependencies {
 	deobfCompile curse.resolve("forestry", "2684780")
 }
