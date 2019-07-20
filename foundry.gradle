@@ -1,3 +1,3 @@
 dependencies {
-	deobfCompile curse.resolve("foundry", "2405009")
+	deobfCompile curse.resolve("ignition-foundry", "2719054")
 }
