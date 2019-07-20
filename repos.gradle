@@ -41,8 +41,8 @@ repositories {
 		url = "https://repo.elytradev.com"
 	}
 	maven {
-		name = "Curse"
-		url = "https://minecraft.curseforge.com/api/maven/"
+		name = "ModMaven"
+		url = "https://modmaven.k-4u.nl"
 	}
 	maven {
 		name = "covers Maven"
