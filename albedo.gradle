@@ -1,4 +1,3 @@
-apply plugin: 'com.wynprice.cursemaven'
 dependencies {
 	deobfCompile curse.resolve("albedo", "2714505")
 }

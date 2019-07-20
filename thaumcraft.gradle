@@ -1,4 +1,3 @@
-apply plugin: 'com.wynprice.cursemaven'
 dependencies {
 	deobfCompile curse.resolve("thaumcraft", "2629023")
 }
