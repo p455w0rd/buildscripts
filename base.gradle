@@ -12,7 +12,7 @@ group = getGroup()
 archivesBaseName = getArchiveName()
 
 minecraft {
-    version = "1.12.2-14.23.5.2836"
+    version = "1.12.2-14.23.5.2838"
 	mappings = "snapshot_20171003"
 	runDir = "run"
 	replace '@FINGERPRINT@', project.findProperty('signSHA1')
