@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "com.mod-buildcraft:buildcraft-api:+"
+}

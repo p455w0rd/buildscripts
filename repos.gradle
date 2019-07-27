@@ -33,6 +33,10 @@ repositories {
 		url = "https://maven.latmod.com"
 	}
 	maven {
+		name = "Buildcraft"
+		url = 'https://mod-buildcraft.com/maven'
+	}
+	maven {
 		name = "mmd"
 		url = "http://maven.mcmoddev.com"
 	}
