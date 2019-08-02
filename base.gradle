@@ -49,8 +49,8 @@ minecraft {
 
 dependencies {
 	minecraft "net.minecraftforge:forge:1.14.4-28.0.34"
-	compileOnly fg.deobf("mezz.jei:jei-${getMCVersion()}:+:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-${getMCVersion()}:+")
+	compileOnly fg.deobf("mezz.jei:jei-1.14.3:+:api")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.14.3:+")
 }
 
 processResources {
