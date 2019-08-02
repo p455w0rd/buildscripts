@@ -29,7 +29,7 @@ archivesBaseName = getArchiveName()
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: getMappingsVersion()
+    mappings channel: 'snapshot', version: '20190630-1.14.3'
 	
     runs {
         client = {
