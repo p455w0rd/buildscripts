@@ -180,7 +180,7 @@ String getMappingsVersion() {
 	def today = new Date();
 	def yesterday = today - 1;
 	def dateStr = yesterday.format('yyyyMMdd');
-    return "${dateStr}-" + getMCVersion();
+    return "${dateStr}-1.14.3";
 }
 
 String getVersion() {
