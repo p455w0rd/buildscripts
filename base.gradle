@@ -176,17 +176,17 @@ uploadArchives {
 						name project.archivesBaseName
 						packaging 'jar'
 						description project.archivesBaseName
-						url 'https://github.com/' + project.gitSlug
+						url 'https://github.com/' + project.getProperty("gitSlug")
 
 						scm {
-							url 'https://github.com/' + project.gitSlug
-							connection 'scm:git:git://github.com/' + project.gitSlug + '.git'
-							developerConnection 'scm:git:git@github.com:' + project.gitSlug + '.git'
+							url 'https://github.com/' + project.getProperty("gitSlug")
+							connection 'scm:git:git://github.com/' + project.getProperty("gitSlug") + '.git'
+							developerConnection 'scm:git:git@github.com:' + project.getProperty("gitSlug") + '.git'
 						}
 
 						issueManagement {
 							system 'github'
-							url 'https://github.com/' + project.gitSlug + '/issues'
+							url 'https://github.com/' + project.getProperty("gitSlug") + '/issues'
 						}
 
 						licenses {
