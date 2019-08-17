@@ -160,7 +160,7 @@ jar {
 uploadArchives {
 	repositories {
 		mavenDeployer {
-			if (project.hasProperty("local_maven") || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
+			if ((project.hasProperty("local_maven") && && project.hasProperty("gitSlug")) || (project.hasProperty("maven_user") && project.hasProperty("maven_pass") && project.hasProperty("gitSlug"))) {
 				if (project.hasProperty("maven_pass")) {
 					repository(url: "http://maven_upload.covers1624.net/") {
 						authentication(userName: project.getProperty("maven_user"), password: project.getProperty("maven_pass"))
