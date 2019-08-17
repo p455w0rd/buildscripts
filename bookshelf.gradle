@@ -1,3 +1,3 @@
 dependencies {
-	deobfCompile "net.darkhax.gamestages:Bookshelf-1.12.2:2.3.588"
+	deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.588"
 }
