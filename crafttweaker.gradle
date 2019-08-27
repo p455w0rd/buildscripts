@@ -1,6 +1,6 @@
 dependencies {
 	deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.19.548"
 	deobfCompile "com.blamejared:MTLib:3.0.5.9"
-	deobfCompile "CraftTweaker2:CraftTweaker2-API:4.1.9.6"
+	//deobfCompile "CraftTweaker2:CraftTweaker2-API:4.1.19.548"
 	deobfCompile "CraftTweaker2:ZenScript:4.1.9.6"
 }
