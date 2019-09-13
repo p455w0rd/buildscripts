@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "morph.avaritia:Avaritia:1.12.2-3.3.0.33"
+}

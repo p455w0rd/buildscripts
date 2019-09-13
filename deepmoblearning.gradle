@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile curse.resolve("deep-mob-learning", "2718649")
+}

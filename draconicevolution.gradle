@@ -1,0 +1,6 @@
+dependencies {
+	deobfCompile "com.brandon3055.brandonscore:BrandonsCore:1.12.2-2.4.17.209"
+	deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
+	deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.358:universal"
+	deobfCompile "com.brandon3055.draconicevolution:Draconic-Evolution:1.12.2-2.3.24.349"
+}

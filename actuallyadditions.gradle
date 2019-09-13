@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile curse.resolve("actually-additions", "2774057")
+}
