@@ -1,5 +1,5 @@
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/ccl.gradle'
 
 dependencies {
-	deobfCompile "morph.avaritia:Avaritia:1.12.2-3.3.0.33"
+	deobfCompile "morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal"
 }
