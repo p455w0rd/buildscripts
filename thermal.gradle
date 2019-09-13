@@ -1,7 +1,7 @@
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/ccl.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/rf.gradle'
 
 dependencies {
-	deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
 	deobfCompile "cofh:ThermalDynamics:1.12.2-2.5.4.18:universal"
 	deobfCompile "cofh:ThermalFoundation:1.12.2-2.6.2.26:universal"
 	deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.3.41:universal"

@@ -1,7 +1,7 @@
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/ccl.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/rf.gradle'
 
 dependencies {
 	deobfCompile "com.brandon3055.brandonscore:BrandonsCore:1.12.2-2.4.17.209"
-	deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.6:universal"
 	deobfCompile "com.brandon3055.draconicevolution:Draconic-Evolution:1.12.2-2.3.24.349"
 }
