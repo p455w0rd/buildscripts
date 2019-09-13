@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile curse.resolve("patchouli", "2731963")
+}
