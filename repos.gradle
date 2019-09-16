@@ -45,10 +45,10 @@ repositories {
 		name = "covers Maven"
 		url = "http://maven.covers1624.net"
 	}
-	maven {
-		name = "ModMaven"
-		url = "https://modmaven.k-4u.nl"
-	}
+	//maven {
+	//	name = "ModMaven"
+	//	url = "https://modmaven.k-4u.nl"
+	//}
 	maven {
 		name = "Curse"
 		url = "https://minecraft.curseforge.com/api/maven/"
