@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile curse.resolve("building-gadgets", "2771618")
+}

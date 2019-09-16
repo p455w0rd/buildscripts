@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile curse.resolve("demagnetize", "2786035")
+}

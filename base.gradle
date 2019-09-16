@@ -29,7 +29,7 @@ archivesBaseName = getArchiveName()
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190630-1.14.3'
+    mappings channel: 'snapshot', version: '20190817-1.14.3'
 	
     runs {
         client = {
@@ -48,9 +48,9 @@ minecraft {
 }
 
 dependencies {
-	minecraft "net.minecraftforge:forge:1.14.4-28.0.34"
-	compileOnly fg.deobf("mezz.jei:jei-1.14.3:+:api")
-	runtimeOnly fg.deobf("mezz.jei:jei-1.14.3:+")
+	minecraft "net.minecraftforge:forge:1.14.4-28.0.83"
+	compileOnly fg.deobf("mezz.jei:jei-1.14.4:+:api")
+	runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:+")
 }
 
 processResources {
