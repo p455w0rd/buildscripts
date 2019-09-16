@@ -1,5 +1,6 @@
 repositories {
 	jcenter()
+	maven { url 'http://repo1.maven.org/maven2' }
 	maven {
 		name = "progwml6"
 		url = "https://dvs1.progwml6.com/files/maven"
