@@ -119,9 +119,12 @@ processResources {
 	from(sourceSets.main.resources.srcDirs) {
 		include "mcmod.info"
 		expand "version": project.version, "mcversion": project.minecraft.version
+		include 'pack.mcmeta'
+		expand 'modname': getModName()
 	}
 	from(sourceSets.main.resources.srcDirs) {
 		exclude "mcmod.info"
+		exclude 'pack.mcmeta'
 	}
 	rename '(.+_at.cfg)', 'META-INF/$1'
 }
