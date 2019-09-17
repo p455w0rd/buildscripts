@@ -120,7 +120,7 @@ processResources {
 		include "mcmod.info"
 		expand "version": project.version, "mcversion": project.minecraft.version
 		include 'pack.mcmeta'
-		replace '@MODNAME@', getModName()
+		expand 'description': replace('@MODNAME@', getModName())
 	}
 	from(sourceSets.main.resources.srcDirs) {
 		exclude "mcmod.info"
