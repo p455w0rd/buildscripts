@@ -1,6 +1,6 @@
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/rf.gradle'
 
 dependencies {
-	deobfCompile "com.github.mcjty:mcjtylib:1.12-3.1.0"
+	deobfCompile "com.github.mcjty:mcjtylib:1.12-3.5.4"
 	deobfCompile "com.github.mcjty:rftools:1.12-7.70"
 }
