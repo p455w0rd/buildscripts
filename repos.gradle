@@ -44,6 +44,10 @@ repositories {
 		name = "mmd"
 		url = "http://maven.mcmoddev.com"
 	}
+	maven {
+		name = "JitPack"
+		url 'https://jitpack.io'
+	}
 	/*maven {
 		name = "elytradev"
 		url = "https://repo.elytradev.com"
