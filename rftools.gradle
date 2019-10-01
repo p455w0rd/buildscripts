@@ -1,4 +1,4 @@
 dependencies {
-	deobfCompile "com.github.mcjty:rftools:1.12-7.72"
+	deobfCompile "com.github.mcjty:rftools:1.12-7.70"
 	deobfCompile "com.github.mcjty:mcjtylib:1.12-3.5.4"
 }
