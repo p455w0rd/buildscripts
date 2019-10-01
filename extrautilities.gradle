@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("extra-utilities", "2678374")
+	deobfCompile "extra-utilities:extrautils2:1.12:1.9.9"
+	//deobfCompile curse.resolve("extra-utilities", "2678374")
 }

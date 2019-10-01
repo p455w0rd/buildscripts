@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("demagnetize", "2657779")
+	deobfCompile "demagnetize:demagnetize:1.12.2:1.1.0"
+	//deobfCompile curse.resolve("demagnetize", "2657779")
 }

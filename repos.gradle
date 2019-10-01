@@ -56,4 +56,8 @@ repositories {
 		name = "covers Maven"
 		url = "http://maven.covers1624.net"
 	}
+	maven {
+		name = "CurseForge Maven"
+		url = "https://minecraft.curseforge.com/api/maven/"
+	}
 }

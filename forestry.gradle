@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("forestry", "2684780")
+	deobfCompile "forestry:forestry_1.12.2:5.8.1.322"
+	//deobfCompile curse.resolve("forestry", "2684780")
 }

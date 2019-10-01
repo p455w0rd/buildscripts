@@ -1,4 +1,5 @@
 dependencies {
-	deobfCompile curse.resolve("rftools", "2745848")
+	deobfCompile "rftools:rftools:1.12:7.72"
+	//deobfCompile curse.resolve("rftools", "2745848")
 	deobfCompile "com.github.mcjty:mcjtylib:1.12-3.5.4"
 }

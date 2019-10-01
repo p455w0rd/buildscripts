@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("albedo", "2714505")
+	deobfCompile "albedo:1.12.2:1.1.0"
+	//deobfCompile curse.resolve("albedo", "2714505")
 }

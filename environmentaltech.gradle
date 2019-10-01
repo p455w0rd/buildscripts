@@ -1,5 +1,7 @@
 dependencies {
-	deobfCompile curse.resolve("valkyrielib", "2691542")
-	deobfCompile curse.resolve("valkyriecompat", "2691540")
-	deobfCompile curse.resolve("environmental-tech", "2691536")
+	deobfCompile "environmental-tech:environmentaltech:1.12.2:2.0.20.1"
+	deobfCompile "valkyrielib:valkyrielib:1.12.2:2.0.20.1"
+	//deobfCompile curse.resolve("valkyrielib", "2691542")
+	//deobfCompile curse.resolve("valkyriecompat", "2691540")
+	//deobfCompile curse.resolve("environmental-tech", "2691536")
 }

@@ -1,0 +1,3 @@
+dependencies {
+	deobfCompile "laggoggles:LagGoggles-FAT:1.12.2:4.8"
+}

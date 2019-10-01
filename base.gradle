@@ -3,6 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'java'
 
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/repos.gradle'
+apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/laggoggles.gradle'
 
 sourceCompatibility = targetCompatibility = "1.8"
 
@@ -38,7 +39,7 @@ dependencies {
 	}
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
-	deobfCompile curse.resolve("laggoggles", "2732828")
+	//deobfCompile curse.resolve("laggoggles", "2732828")
 }
 
 task signJar(type: SignJar, dependsOn: reobfJar) {

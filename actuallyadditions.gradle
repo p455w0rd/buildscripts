@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("actually-additions", "2774057")
+	deobfCompile "actually-additions:ActuallyAdditions:1.12.2:r150"
+	//deobfCompile curse.resolve("actually-additions", "2774057")
 }

@@ -1,3 +1,4 @@
 dependencies {
-	deobfCompile curse.resolve("baubles", "2518667")
+	deobfCompile "baubles:Baubles:1.12:1.5.2"
+	//deobfCompile curse.resolve("baubles", "2518667")
 }
