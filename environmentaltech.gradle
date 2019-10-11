@@ -1,5 +1,5 @@
 dependencies {
 	deobfCompile "environmental-tech:environmentaltech:1.12.2:2.0.20.1"
 	deobfCompile "valkyrielib:valkyrielib:1.12.2:2.0.20.1"
-	deobfCompile "valkyriecompat:valkyriecompat:1.12.1:2.0.20.1"
+	deobfCompile "valkyriecompat:valkyriecompat:1.12.2:2.0.20.1"
 }
