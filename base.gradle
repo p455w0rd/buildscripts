@@ -29,8 +29,10 @@ archivesBaseName = getArchiveName()
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190817-1.14.3'
-	
+    mappings channel: 'snapshot', version: '20191010-1.14.3'
+	if (project.hasProperty("ATFile")) {
+		accessTransformer = file('src/main/resources/META-INF/' + project.getProperty("ATFile")
+	}
     runs {
         client = {
             properties 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -48,7 +50,7 @@ minecraft {
 }
 
 dependencies {
-	minecraft "net.minecraftforge:forge:1.14.4-28.0.83"
+	minecraft "net.minecraftforge:forge:1.14.4-28.1.61"
 	compileOnly fg.deobf("mezz.jei:jei-1.14.4:+:api")
 	runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:+")
 }
@@ -56,6 +58,7 @@ dependencies {
 processResources {
 	inputs.property "version", getVersion()
 	inputs.property "mcversion", getMCVersion()
+	filter { String line -> line.replace('@MODNAME@', getModName()) }
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mods.toml'
 		expand 'version': getVersion(), 'mcversion': getMCVersion()

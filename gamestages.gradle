@@ -1,0 +1,3 @@
+dependencies {
+	compileOnly fg.deobf("game-stages:GameStages:1.14.2:4.0.6")
+}

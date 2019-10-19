@@ -1,0 +1,3 @@
+dependencies {
+	compileOnly fg.deobf("crafttweaker:CraftTweaker:1.14.4:5.0.0")
+}

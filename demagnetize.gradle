@@ -1,3 +1,3 @@
 dependencies {
-	compileOnly fg.deobf(curse.resolve("demagnetize", "2786035"))
+	compileOnly fg.deobf("demagnetize:demagnetize:1.14.4:1.2.0")
 }
