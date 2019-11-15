@@ -3,5 +3,5 @@ apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/baubles.gradle
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/rf.gradle'
 apply from : 'https://github.com/p455w0rd/buildscripts/raw/master/itemscroller.gradle'
 dependencies {
-	deobfCompile "p455w0rd:AE2WTLib:1.12.2-1.0.29"
+	deobfCompile "p455w0rd:AE2WTLib:1.12.2-1.0.31"
 }
