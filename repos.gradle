@@ -1,5 +1,13 @@
 repositories {
 	jcenter()
+		maven {
+		name = "covers Maven"
+		url = "http://maven.covers1624.net"
+	}
+	maven {
+		name = "CurseForge Maven"
+		url = "https://minecraft.curseforge.com/api/maven/"
+	}
 	maven {
 		name = "Jared"
         url 'http://maven.blamejared.com'
@@ -51,13 +59,5 @@ repositories {
 	maven {
 		name = "ModMaven"
 		url = "https://modmaven.k-4u.nl"
-	}
-	maven {
-		name = "covers Maven"
-		url = "http://maven.covers1624.net"
-	}
-	maven {
-		name = "CurseForge Maven"
-		url = "https://minecraft.curseforge.com/api/maven/"
 	}
 }
