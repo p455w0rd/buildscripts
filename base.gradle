@@ -101,6 +101,13 @@ task apiJar(type: Jar) {
 	include "p455w0rd/" + getModId() + "/api/**"
 }
 
+task repairPublicFiles(type: Copy) {
+	from "src/main/resources/assets/" + getModId() + "/textures"
+	into "build/resources/main/assets/" + getModId() + "/textures"
+}
+
+processResources.finalizedBy repairPublicFiles
+
 artifacts {
 	archives sourcesJar
 	archives deobfJar
