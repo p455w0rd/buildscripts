@@ -12,10 +12,12 @@ group = getGroup()
 archivesBaseName = getArchiveName()
 
 minecraft {
-    version = "1.12.2-14.23.5.2847"
+    version = "1.12.2-14.23.5.2838"
 	mappings = "snapshot_20171003"
 	runDir = "run"
-	replace '@FINGERPRINT@', project.findProperty('signSHA1')
+	if (project.hasProperty("signSHA1")) {
+		replace '@FINGERPRINT@', project.findProperty('signSHA1')
+	}
 	useDepAts = false
 	serverJvmArgs += "-Dfml.doNotBackup=true"
 	serverJvmArgs += "-Dfml.queryResult=confirm"
@@ -28,15 +30,12 @@ configurations.all {
 }
 
 dependencies {
-	//deobfCompile "mezz.jei:jei_1.12.2:4.14.3.238"
 	compile "mezz.jei:jei_1.12.2:4.14.3.238"
-	//runtime "mezz.jei:jei_1.12.2:4.14.3.238"
 	if (!project.hasProperty("excludePwLib")) {
 		deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.3.159"
 	}
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
-	//deobfCompile curse.resolve("laggoggles", "2732828")
 }
 
 task signJar(type: SignJar, dependsOn: reobfJar) {
