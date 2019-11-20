@@ -22,7 +22,6 @@ minecraft {
 	serverJvmArgs += "-Dfml.doNotBackup=true"
 	serverJvmArgs += "-Dfml.queryResult=confirm"
 	clientJvmArgs += "-Dfml.doNotBackup=true"
-
 }
 
 configurations.all {
@@ -32,7 +31,7 @@ configurations.all {
 dependencies {
 	compile "mezz.jei:jei_1.12.2:4.14.3.238"
 	if (!project.hasProperty("excludePwLib")) {
-		deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.3.159"
+		deobfCompile "p455w0rd:p455w0rdslib:1.12.2-2.3.160"
 	}
 	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.23-16"
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
