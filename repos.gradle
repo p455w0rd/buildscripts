@@ -21,10 +21,6 @@ repositories {
 		url = "https://maven.tterrag.com"
 	}
 	maven {
-		name = "tterrag2"
-		url = "https://maven2.tterrag.com"
-	}
-	maven {
 		name = "ProfMobius"
 		url = "http://mobiusstrip.eu/maven"
 	}
